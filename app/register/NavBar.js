@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-// import NavUserMenu from './NavUserMenu';
+import NavUserMenu from './NavUserMenu';
 import NavCartMenu from './NavCartMenu';
 
 const pages = [
@@ -63,21 +63,20 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                
+                <Link href={page.href} key={page.name}>
                   <MenuItem
-                  component={Link}
-                  href={page.href}
-                    key={page.name}
+                    key={page}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'black', display: 'block' }}
                   >
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
-
+                </Link>
               ))}
             </Menu>
           </Box>
-            <Typography component={Link}
+          <Link className="m-4" href="/">
+            <Typography
               variant="h6"
               noWrap
               href="/"
@@ -86,25 +85,28 @@ const Navbar = () => {
                 display: { xs: 'center', md: 'flex' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: '.2rem',
+                letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
               }}
             >
               Sample Store
             </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-                <Button component={Link} href={page.href} key={page.name}
+              <Link href={page.href} key={page.name}>
+                <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page.name}
                 </Button>
+              </Link>
             ))}
           </Box>
           <NavCartMenu />
-          {/* <NavUserMenu /> */}
+          <NavUserMenu />
         </Toolbar>
       </Container>
     </AppBar>

@@ -12,7 +12,7 @@ import useAuth from '../hooks/useAuth';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from 'next/link';
-
+import NoSsr from '@mui/base/NoSsr';
 
 const LOGIN_URL = 'v1/auth/login';
 
@@ -64,9 +64,9 @@ const LoginPage = () => {
   };
 
   return (
+    <NoSsr>
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <CssBaseline />
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div className="text-center">
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -102,17 +102,19 @@ const LoginPage = () => {
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />            
+            /> 
+         
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
-            <Grid container>
+            
+            <Grid>
               <Grid item xs>
                 <Link href="#">
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid>
                 <Link href="#">
                   {"Don't have an account? Sign Up"}
                 </Link>
@@ -122,6 +124,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
+    </NoSsr>
   );
 }
 

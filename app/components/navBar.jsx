@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import  Link from 'next/link';
 import AppBar from '@mui/material/AppBar';
@@ -31,6 +32,8 @@ const Navbar = () => {
   };
 
   return (
+    <>
+    
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -109,6 +112,8 @@ const Navbar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+    
+    </>
   );
 };
 

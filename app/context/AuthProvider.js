@@ -1,6 +1,5 @@
 'use client';
 import { createContext, useEffect, useState } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AuthContext = createContext(null);
 
@@ -8,7 +7,10 @@ export const AuthProvider = ({ children }) => {
   // useEffect(()=>{
   //   console.log("🚀 ~ file: AuthProvider.js:13 ~ AuthProvider ~ auth:", auth),[auth]
   // });
-  const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken", "")
+  const refreshToken =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('refreshToken')
+      : false;
   const [auth, setAuth] = useState({});
 
   return (

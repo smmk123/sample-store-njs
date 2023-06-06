@@ -34,20 +34,22 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/proxy',{
+      const response = await axios.post('/api/proxy', {
         endpoint: LOGIN_URL,
         method: 'POST',
         body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },       
+        headers: { 'Content-Type': 'application/json' },
       });
       const accessToken = response?.data?.tokens?.access?.token;
       const roles = response?.data?.user?.role;
       const user = response?.data?.user?.name;
       setAuth({ user, email, password, roles, accessToken });
-      localStorage.setItem(
-        'refreshToken',
-        response?.data?.tokens?.refresh?.token
-      );
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(
+          'refreshToken',
+          response?.data?.tokens?.refresh?.token
+        );
+      }
       setEmail('');
       setPassword('');
     } catch (err) {
@@ -65,67 +67,68 @@ const LoginPage = () => {
 
   return (
     <NoSsr>
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <div className="text-center">
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-          </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={handleEmailChange}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handlePasswordChange}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> 
-         
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-              Sign In
-            </Button>
-            
-            <Grid>
-              <Grid item xs>
-                <Link href="#">
-                  Forgot password?
-                </Link>
-              </Grid>
+      <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <div className="text-center">
+              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+            </div>
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleEmailChange}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={handlePasswordChange}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+
               <Grid>
-                <Link href="#">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Grid item xs>
+                  <Link href="#">Forgot password?</Link>
+                </Grid>
+                <Grid>
+                  <Link href="#">{"Don't have an account? Sign Up"}</Link>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </NoSsr>
   );
-}
+};
 
 export default LoginPage;

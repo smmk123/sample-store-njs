@@ -54,21 +54,21 @@ const ShoppingCart = () => {
   return (
     <div className="container mx-auto mt-20">
       <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="rounded-lg shadow">
         <Table>
-          <TableHead>
+          <TableHead className="bg-gray-200">
             <TableRow>
-              <TableCell className="font-bold">Item</TableCell>
-              <TableCell className="font-bold">Quantity</TableCell>
-              <TableCell className="font-bold">Price</TableCell>
-              <TableCell className="font-bold">Subtotal</TableCell>
+              <TableCell className="font-bold px-6 py-3">Item</TableCell>
+              <TableCell className="font-bold px-6 py-3">Quantity</TableCell>
+              <TableCell className="font-bold px-6 py-3">Price</TableCell>
+              <TableCell className="font-bold px-6 py-3">Subtotal</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {cart.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>
+                <TableCell className="px-6 py-4">{item.name}</TableCell>
+                <TableCell className="px-6 py-4">
                   <CartButton
                     itemId={item.id}
                     quantity={
@@ -80,15 +80,19 @@ const ShoppingCart = () => {
                     stock={item.inStock}
                   />
                 </TableCell>
-                <TableCell>{formatPrice(item.price)}</TableCell>
-                <TableCell>{formatPrice(item.price * item.quantity)}</TableCell>
+                <TableCell className="px-6 py-4">
+                  {formatPrice(item.price)}
+                </TableCell>
+                <TableCell className="px-6 py-4">
+                  {formatPrice(item.price * item.quantity)}
+                </TableCell>
               </TableRow>
             ))}
             <TableRow>
-              <TableCell colSpan={3} className="text-right font-bold">
+              <TableCell colSpan={3} className="text-right font-bold px-6 py-3">
                 Total:
               </TableCell>
-              <TableCell className="font-bold">
+              <TableCell className="font-bold px-6 py-3">
                 {formatPrice(subtotal)}
               </TableCell>
             </TableRow>

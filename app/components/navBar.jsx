@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-// import NavUserMenu from './NavUserMenu';
+import NavUserMenu from './NavUserMenu';
 import NavCartMenu from './NavCartMenu';
 
 const pages = [
@@ -104,7 +104,7 @@ const Navbar = () => {
             ))}
           </Box>
           <NavCartMenu />
-          {/* <NavUserMenu /> */}
+          <NavUserMenu />
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import  Link from 'next/link';
+import Link from 'next/link';
 import AuthContext from '../context/AuthProvider';
 import useLogout from '../hooks/useLogout';
 import Box from '@mui/material/Box';
@@ -20,7 +20,7 @@ const NavUserMenu = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { auth, setAuth } = useContext(AuthContext);
   const router = useRouter();
-  const logout = useLogout();
+  // const logout = useLogout();
 
   const signOut = async () => {
     // await logout();
@@ -67,7 +67,7 @@ const NavUserMenu = () => {
             >
               {settings.map((setting) => (
                 <Link
-                  to={setting.href}
+                  href={setting.href}
                   key={setting.name}
                   className="text-black"
                 >
@@ -82,7 +82,7 @@ const NavUserMenu = () => {
         </>
       ) : (
         <>
-          <Link to="login">Login</Link>
+          <Link href="login">Login</Link>
         </>
       )}
     </>

@@ -8,14 +8,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import axios from '../api/axios';
+import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from 'next/link';
 
-const LOGIN_URL = '/v1/auth/login';
+const LOGIN_URL = 'v1/auth/login';
 
 const LoginPage = () => {
   const { setAuth } = useAuth();
@@ -35,13 +35,13 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ email, password }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      const response = await axios.post('/api/proxy',{
+        endpoint: LOGIN_URL,
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },       
+      });
+      console.log("🚀 ~ file: page.tsx:44 ~ handleSubmit ~ response:", response)
       const accessToken = response?.data?.tokens?.access?.token;
       const roles = response?.data?.user?.role;
       const user = response?.data?.user?.name;
@@ -104,24 +104,18 @@ const LoginPage = () => {
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleSubmit}
-            >
+            />            
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleSubmit}>
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="#">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

@@ -17,7 +17,7 @@ export default function Products() {
         endpoint: 'v1/products',
         method: 'GET',
       });
-      const data = response.data;
+      const data = response.data.results;
       setData(data);
     } catch (error) {
       console.error('Error fetching data:', error);

@@ -5,10 +5,10 @@ import useLocalStorage from '../hooks/useLocalStorage';
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  useEffect(()=>{
-    console.log("🚀 ~ file: AuthProvider.js:13 ~ AuthProvider ~ auth:", auth),[auth]
-  });
-  // const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken", "")
+  // useEffect(()=>{
+  //   console.log("🚀 ~ file: AuthProvider.js:13 ~ AuthProvider ~ auth:", auth),[auth]
+  // });
+  const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken", "")
   const [auth, setAuth] = useState({});
 
   return (

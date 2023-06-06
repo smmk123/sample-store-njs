@@ -103,7 +103,7 @@ const LoginPage = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />            
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleSubmit}>
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
             <Grid container>

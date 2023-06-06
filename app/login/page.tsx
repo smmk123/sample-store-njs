@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,9 +10,9 @@ import Checkbox from '@mui/material/Checkbox';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from 'next/link';
+
 
 const LOGIN_URL = 'v1/auth/login';
 
@@ -41,7 +40,6 @@ const LoginPage = () => {
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },       
       });
-      console.log("🚀 ~ file: page.tsx:44 ~ handleSubmit ~ response:", response)
       const accessToken = response?.data?.tokens?.access?.token;
       const roles = response?.data?.user?.role;
       const user = response?.data?.user?.name;

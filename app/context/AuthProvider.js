@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   // useEffect(()=>{

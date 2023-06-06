@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { ShoppingCart } from '@mui/icons-material';
 
 export default function Home() {
-  return (<>
-  <div className="relative">
+  return (
+    <>
+      <div className="relative">
         <img src="hero.jpg" alt="Hero" className="object-cover w-full h-full" />
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="absolute inset-0 flex flex-col justify-center items-center">
@@ -54,5 +55,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>)
+    </>
+  );
 }

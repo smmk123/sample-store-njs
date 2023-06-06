@@ -1,11 +1,10 @@
 'use client';
 import React from 'react';
-import axios from '../../api/limitless';
-import useAxios from '../../hooks/useAxios';
+import axios from 'axios';
 import Card from '../components/productCard';
 
 export default function Products() {
-  const [products, error, loading, axiosFetch] = useAxios({
+  const [products, error, loading, axiosFetch] = axios.post({
     axiosInstance: axios,
     method: 'GET',
     url: '/v1/products',

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { ShoppingCart } from '@mui/icons-material';
 
-export default function Home({ children}) {
+export default function Home() {
   return (<>
   <div className="relative">
         <img src="hero.jpg" alt="Hero" className="object-cover w-full h-full" />
@@ -54,6 +54,5 @@ export default function Home({ children}) {
           </div>
         </div>
       </div>
-      {children}
     </>)
 }

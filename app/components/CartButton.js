@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 const CartButton = ({ itemId, quantity, onUpdateQuantity, stock }) => {
   const [itemQuantity, setItemQuantity] = useState(quantity);

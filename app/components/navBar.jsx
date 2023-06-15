@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import  Link from 'next/link';
+import Link from 'next/link';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -33,55 +33,53 @@ const Navbar = () => {
 
   return (
     <>
-    
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page) => (
                   <MenuItem
-                  component={Link}
-                  href={page.href}
+                    component={Link}
+                    href={page.href}
                     key={page.name}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'black', display: 'block' }}
                   >
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
-
-              ))}
-            </Menu>
-          </Box>
-            <Typography component={Link}
+                ))}
+              </Menu>
+            </Box>
+            <Typography
+              component={Link}
               variant="h6"
               noWrap
               href="/"
@@ -97,22 +95,24 @@ const Navbar = () => {
             >
               Sample Store
             </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-                <Button component={Link} href={page.href} key={page.name}
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page) => (
+                <Button
+                  component={Link}
+                  href={page.href}
+                  key={page.name}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page.name}
                 </Button>
-            ))}
-          </Box>
-          <NavCartMenu />
-          <NavUserMenu />
-        </Toolbar>
-      </Container>
-    </AppBar>
-    
+              ))}
+            </Box>
+            <NavCartMenu />
+            <NavUserMenu />
+          </Toolbar>
+        </Container>
+      </AppBar>
     </>
   );
 };
